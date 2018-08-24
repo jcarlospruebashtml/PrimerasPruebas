@@ -37,21 +37,30 @@ function crearsis(sistema){
 }
 function crear(){
 	var archivo=document.getElementById("entrada").value;
+	var directorio=document.getElementById("dir").value;
 		if(archivo!==""){
 			
 			/*La diferencia de crear un archivo o un directorio estriba solamente en usar el metodo "getFile" o "getDirectory".*/
 			
-			  espacio_asignado.getFile(archivo, {create:true, exclusive:false},mostrarSiExito,errores);
+			  espacio_asignado.getFile(archivo, {create:true, exclusive:false},mostrarSiExitoFile,errores);
 			
-		/*mostrarSiExito lanza un objeto, bueno en realidad el objeto se lanza al crear un archivo con "getFile" de forma parecida al anterior "RequestFileSysten" que nos creo nuestro sistema de archivos;*/
+		/*mostrarSiExitoFile lanza un objeto, bueno en realidad el objeto se lanza al crear un archivo con "getFile" de forma parecida al anterior "RequestFileSysten" que nos creo nuestro sistema de archivos;*/
+		}
+		if(directorio!==""){
+			espacio_asignado.getDirectory(directorio, {create:true, exclusive:false},mostrarSiExitoDir,errores);
 		}
 }
-function mostrarSiExito(entrada){
-	/*"entrada" hace referencia al objeto lanzado al crear el archivo y es capturado a modo de parametro por la funcion que forma parte del metodo "getFile";*/
+function mostrarSiExitoFile(file){
+	/*"file" hace referencia al objeto lanzado al crear el archivo y es capturado a modo de parametro por la funcion que forma parte del metodo "getFile";*/
 	document.getElementById("entrada").value="";	
-	zonadatos.innerHTML="Espacio en disco y archivo creados correctamente!<br>";
-	zonadatos.innerHTML+="Nombre: " + entrada.name + "<br>";
-	zonadatos.innerHTML+="Ruta: " + entrada.fullPath + "<br>";
+	zonadatos.innerHTML="Espacio en disco, directorios y archivos creados correctamente!<br>";
+	zonadatos.innerHTML+="Archivo: " + file.name + "<br>";
+	zonadatos.innerHTML+="Ruta: " + file.fullPath + "<br>";
+}
+function mostrarSiExitoDir(dir){
+	document.getElementById("dir").value="";
+	zonadatos.innerHTML+="Directorio: " + dir.name + "<br>";
+	zonadatos.innerHTML+="Ruta: " + dir.fullPath + "<br>";
 }
 function errores(evento){
 	/*Cuando se produce un error se lanza tambien un objeto que hay que capturar al que por convencion llamamos "e" o "evento";*/
