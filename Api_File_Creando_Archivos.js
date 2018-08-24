@@ -49,7 +49,7 @@ function crear(){
 function mostrarSiExito(entrada){
 	/*"entrada" hace referencia al objeto lanzado al crear el archivo y es capturado a modo de parametro por la funcion que forma parte del metodo "getFile";*/
 	document.getElementById("entrada").value="";	
-	zonadatos.innerHTML="Espacio en disco y archivo creados correctamente!";
+	zonadatos.innerHTML="Espacio en disco y archivo creados correctamente!<br>";
 	zonadatos.innerHTML+="Nombre: " + entrada.name + "<br>";
 	zonadatos.innerHTML+="Ruta: " + entrada.fullPath + "<br>";
 }
