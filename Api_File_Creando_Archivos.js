@@ -7,7 +7,7 @@
 var zonadatos,boton,espacio_asignado;
 
 function inicio(){
-	zonadatos=document.getElementById("zonadatos");
+	zonadatos=document.getElementById("zonadatos");/*ERROR REFORMADO, "document.getElementById" por "addEventListener", descubierto gracias a la consola del navegador chrome*/
 	boton=document.getElementById("boton");
 	boton.addEventListener("click",crear,false);
 	
